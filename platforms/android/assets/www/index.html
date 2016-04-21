@@ -1,0 +1,216 @@
+<!--index.html
+the html document that contains all the pages of the mobile application
+
+    Revision History:
+        Cody Lefebvre:4.10.2016:Created
+        Cody Lefebvre:4.12.2016:added list page, and detail page
+        Cody Lefebvre:4.13.2016: added match history page and contact page
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Summoner Lookup With CRUD</title>
+    <!--jQuery mobile style-->
+    <link rel="stylesheet" type="text/css" href="css/lib/jquery.mobile-1.4.5.css">
+    <!--our styles-->
+    <link rel="stylesheet" type="text/css" href="css/mystyles.css">
+    <!--jQuery-->
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <!--jQuery Mobile-->
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <!--jQuery validator-->
+    <script src="js/lib/jquery.validate.js"></script>
+    <!--our scripts-->
+    <script src="js/database.js"></script>
+    <script src="js/leagueDAL.js"></script>
+    <script src="js/facade.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/global.js"></script>
+</head>
+<body>
+<!--Home Page-->
+    <div id="HomePage" data-role="page">
+        <header data-role="header" class="header">
+            <img src="images/lol.jpg">
+            <h1>Cody's LoL app</h1>
+        </header>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" data-theme="b" class="ui-btn-active ui-state-persist"
+                       data-transition="" data-rel="" >Home</a></li>
+                <li><a href="#LookupPage" data-icon="plus" data-theme="b" class=""
+                       data-transition="" data-rel="" >Search</a></li>
+                <li><a href="#ListPage" data-icon="grid" data-theme="b"
+                       class=""
+                       data-transition="" data-rel="" >Details</a></li>
+                <li><a href="#ContactPage" data-icon="star" data-theme="b"
+                       class=""
+                       data-transition="" data-rel="" >About</a></li>
+            </ul>
+        </div>
+        <section data-role="content">
+            <p align="center"><img src="images/lol.jpg" width="200px" height="200px" style="align-content: center;"></p>
+            <p>Welcome to my League of Legends app. The purpose of this application is to look up summoner information and match information. some of the data searched will be stored to a database for future use.You will also be able to look up match history and other information based on summoner.</p>
+        </section>
+        <footer data-role="footer">
+            <h4>Cody Lefebvre &copy;</h4>
+        </footer>
+    </div>
+<!--Summoner Loopup Page -->
+    <div id="LookupPage" data-role="page">
+        <header data-role="header" class="header">
+            <img src="images/lol.jpg">
+            <h1>Lookup A Summoner</h1>
+        </header>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" data-theme="b" class=""
+                       data-transition="" data-rel="" >Home</a></li>
+                <li><a href="#LookupPage" data-icon="plus" data-theme="b" class="ui-btn-active ui-state-persist"
+                       data-transition="" data-rel="" >Search</a></li>
+                <li><a href="#ListPage" data-icon="grid" data-theme="b"
+                       class=""
+                       data-transition="" data-rel="" >Details</a></li>
+                <li><a href="#ContactPage" data-icon="star" data-theme="b"
+                       class=""
+                       data-transition="" data-rel="" >About</a></li>
+            </ul>
+        </div>
+        <section data-role="content">
+            <form id="frmSummonerLookup">
+                <label for="txtSummonerName">Summoner Name:</label>
+                <input type="text" id="txtSummonerName">
+                <button id="btnSubmit">Submit</button>
+                <button id="btnDropDatabase">Drop Database</button>
+            </form>
+        </section>
+        <footer data-role="footer">
+            <h4>Cody Lefebvre &copy;</h4>
+        </footer>
+    </div>
+<!--summoners list-->
+    <div id="ListPage" data-role="page">
+        <header data-role="header" class="header">
+            <img src="images/lol.jpg">
+            <h1>Summoners: last searched</h1>
+        </header>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" data-theme="b" class=""
+                       data-transition="" data-rel="" >Home</a></li>
+                <li><a href="#LookupPage" data-icon="plus" data-theme="b" class=""
+                       data-transition="" data-rel="" >Search</a></li>
+                <li><a href="#ListPage" data-icon="grid" data-theme="b"
+                       class="ui-btn-active ui-state-persist"
+                       data-transition="" data-rel="" >Details</a></li>
+                <li><a href="#ContactPage" data-icon="star" data-theme="b"
+                       class=""
+                       data-transition="" data-rel="" >About</a></li>
+            </ul>
+        </div>
+        <section data-role="content">
+            <ul data-role="listview" id="summonerList">
+            </ul>
+            <br/>
+            <fieldset data-role="controlgroup" data-theme="b" data-type="horizontal">
+                <label for="statsRadio">Stats</label>
+                <input name="Radio" id="statsRadio" type="radio" checked>
+                <label for="matchRadio">Match History</label>
+                <input name="Radio" id="matchRadio" type="radio">
+            </fieldset>
+        </section>
+        <footer data-role="footer">
+            <h4>Cody Lefebvre &copy;</h4>
+        </footer>
+    </div>
+
+    <div id="SummonerDetailsPage" data-role="page">
+        <header data-role="header" class="header">
+            <img src="images/lol.jpg">
+            <h1>Details:</h1>
+        </header>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" data-theme="b" class=""
+                       data-transition="" data-rel="" >Home</a></li>
+                <li><a href="#LookupPage" data-icon="plus" data-theme="b" class=""
+                       data-transition="" data-rel="" >Search</a></li>
+                <li><a href="#ListPage" data-icon="grid" data-theme="b"
+                       class=""
+                       data-transition="" data-rel="" >Details</a></li>
+                <li><a href="#ContactPage" data-icon="star" data-theme="b"
+                       class=""
+                       data-transition="" data-rel="" >About</a></li>
+            </ul>
+        </div>
+
+        <section data-role="content">
+            <ul data-role="listview" id="statsList">
+            </ul>
+        </section>
+        <footer data-role="footer">
+            <h4>Cody Lefebvre &copy;</h4>
+        </footer>
+    </div>
+
+    <div id="MatchDetailsPage" data-role="page">
+        <header data-role="header" class="header">
+            <img src="images/lol.jpg">
+            <h1>Match History:</h1>
+        </header>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" data-theme="b" class=""
+                       data-transition="" data-rel="" >Home</a></li>
+                <li><a href="#LookupPage" data-icon="plus" data-theme="b" class=""
+                       data-transition="" data-rel="" >Search</a></li>
+                <li><a href="#ListPage" data-icon="grid" data-theme="b"
+                       class=""
+                       data-transition="" data-rel="" >Details</a></li>
+                <li><a href="#ContactPage" data-icon="star" data-theme="b"
+                       class=""
+                       data-transition="" data-rel="" >About</a></li>
+            </ul>
+        </div>
+        <section data-role="content">
+            <ul data-role="listview" id="matchList">
+            </ul>
+        </section>
+        <footer data-role="footer">
+            <h4>Cody Lefebvre &copy;</h4>
+        </footer>
+    </div>
+<!-- Contact Page-->
+    <div id="ContactPage" data-role="page">
+        <header data-role="header" class="header">
+            <img src="images/lol.jpg">
+            <h1>About</h1>
+        </header>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" data-theme="b" class=""
+                       data-transition="" data-rel="" >Home</a></li>
+                <li><a href="#LookupPage" data-icon="plus" data-theme="b" class=""
+                       data-transition="" data-rel="" >Search</a></li>
+                <li><a href="#ListPage" data-icon="grid" data-theme="b"
+                       class=""
+                       data-transition="" data-rel="" >Details</a></li>
+                <li><a href="#ContactPage" data-icon="star" data-theme="b"
+                       class="ui-btn-active ui-state-persist"
+                       data-transition="" data-rel="" >About</a></li>
+            </ul>
+        </div>
+        <section data-role="content" id="cPage">
+            <h3>Name: Cody Lefebvre</h3>
+            <h4>Student number: 6562839</h4>
+            <h4>Email: clefebvre1-cc@conestogac.on.ca</h4>
+            <h4>Summoner Account: Codeman848</h4>
+            <p>I am a computer programmer currently in my last semester of my course. I enjoy playing games such as League of Legends among other games in my spare time. This was a fun assignment that allowed me to express myself creatively while still creating something useful. I look forward to receiving feedback on my app and I hope you enjoy.</p>
+        </section>
+        <footer data-role="footer">
+            <h4>Cody Lefebvre &copy;</h4>
+        </footer>
+    </div>
+</body>
+</html>

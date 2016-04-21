@@ -1,0 +1,62 @@
+
+.ui-page .ui-header {
+    background-color: #0000b3;
+    padding-bottom:20px;
+}
+.ui-page .ui-footer {
+    background-color: #0000b3;
+}
+h1{
+    color: white;
+}
+h4{
+    color: white;
+}
+#summonerList h1{
+     color: #0000b3;
+ }
+#summonerList h2{
+    color: #ae5a41;
+}
+#statsList h1{
+    color: black;
+}
+#statsList h2{
+    color: darkred;
+}
+#statsList h3{
+    color: #2a2a2a;
+}
+#statsList h4{
+    color: #828282;
+}
+#matchList h1{
+    color:darkorange;
+}
+#matchList h4{
+     color:goldenrod;
+ }
+
+.header img {
+    float: left;
+    width: 50px;
+    height: 50px;
+    padding:6px;
+    background-color:#0000b3;
+}
+#cPage h4{
+    color: black;
+}
+.header h1 {
+    position: relative;
+    top: 18px;
+    left: 10px;
+}
+#HomePage{
+    background: -moz-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(0,128,128,1) 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(30%, rgba(255,255,255,1)), color-stop(100%, rgba(0,128,128,1))); /* safari4+,chrome */
+    background: -webkit-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(0,128,128,1) 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(0,128,128,1) 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(0,128,128,1) 100%); /* ie10+ */
+    background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(0,128,128,1) 100%); /* w3*/
+}
